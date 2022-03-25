@@ -1,5 +1,6 @@
 cnpjApi: Faz a requisição de dados das indústrias na API CNPJ.WS
-          Modo de uso:
+         
+         Modo de uso:
           
                 node cnpjApi.js 
                 --uf -> ID do estado 
