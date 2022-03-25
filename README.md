@@ -11,13 +11,12 @@
                 
                 
 extractorIndustrias: Validador das industrias obtidas pela cnpjApi.
+
                      Tipo de validações:
                         Google: Verificação se a industrias está cadastrada no Google, 
                         como forma de qualificar a validação de uma industria ativa 
-                        e com informações válidas de contato.
-                        
-                        Facebook: Valida o email de contato e telefone se a industria está no Facebook.
-                        
+                        e com informações válidas de contato.                        
+                        Facebook: Valida o email de contato e telefone se a industria está no Facebook.                        
                      Modo de uso:
                         node extractorIndustrias.js --bd nome do banco de dado
                         
