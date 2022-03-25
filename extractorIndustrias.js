@@ -1,5 +1,4 @@
 const puppeteer = require('puppeteer');
-const csv = require('csv-parser');
 const fs = require('fs');
 const jsdom = require("jsdom");
 const {
