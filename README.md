@@ -19,5 +19,5 @@ extractorIndustrias: Validador das industrias obtidas pela cnpjApi.
                         Facebook: Valida o email de contato e telefone se a industria está no Facebook.
                         
                      Modo de uso:
-                        node extractorIndustrias.js --bd nome do banco de dados
+                        node extractorIndustrias.js --bd nome do banco de dado
                         
