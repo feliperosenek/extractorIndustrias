@@ -73,10 +73,16 @@ async function validaGoogle() {
       type: QueryTypes.SELECT
     });
 
+
     console.log(" ")
     console.log("  ▶▶▶ " + (getIndustrias.length - 1) + " industrias carregadas") // conta o número de industrias nao atualizadas
 
     for (let i = 0; i < getIndustrias.length; i++) { // loop principal que roda de acordo com o número de indústrias
+
+       const getIndustria = await sequelize.query("SELECT id_catalogo, nome, fantasia FROM `catalogo` WHERE atualizado=0 ORDER BY RAND() LIMIT 1", { // pega as industrias no banco que não estão atualizadas em ordem aleatória
+      type: QueryTypes.SELECT
+    });
+
 
       if (i == 0) {
         console.log(" ");
@@ -86,13 +92,13 @@ async function validaGoogle() {
 
         console.log(" ");
         console.log(" ");
-        console.log(" 🔎   Buscando informações sobre: " + getIndustrias[i].nome)
+        console.log(" 🔎   Buscando informações sobre: " + getIndustria[0].nome)
         console.log("Pesquisa " + i + " de " + (getIndustrias.length - 1))
       }
 
         // --> DEFINE A URL DE PESQUISA DE ACORDO COM O NOME DA EMPRESA
 
-      urlSearch = getIndustrias[i].nome.replace(/\s/g, "+"); // pega o nome da empresa e formata os espaçoes com o caracteres + para ser usado na pesquisa do Google
+      urlSearch = getIndustria[0].nome.replace(/\s/g, "+"); // pega o nome da empresa e formata os espaçoes com o caracteres + para ser usado na pesquisa do Google
 
       page.goto("https://www.google.com.br/search?q=" + urlSearch) //faz a busca com a url formatada
       await delay(4000)
@@ -237,8 +243,8 @@ async function validaGoogle() {
         // cria um array com os resultados da busca no Google
 
       results = {
-        id: getIndustrias[i].id_catalogo,
-        nome: getIndustrias[i].nome,
+        id: getIndustria[0].id_catalogo,
+        nome: getIndustria[0].nome,
         site: linkSite,
         face: facebookLink,
         insta: instagramLink,
@@ -251,8 +257,7 @@ async function validaGoogle() {
         endereco: endereco
       }
 
-
-      console.log(results)
+      console.log(results);  
 
 
       // Consulta os dados originais da empresa no banco
