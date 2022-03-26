@@ -1,4 +1,4 @@
-const consultarCNPJ = require('consultar-cnpj')
+cons consultarCNPJ = require('consultar-cnpj')
 const token = 'krFHdXd6msHAoAv2YKYgNddzJSunRMPXjYbePiRxNvfz'
 const puppeteer = require('puppeteer');
 const Sequelize = require('sequelize');
