@@ -41,16 +41,19 @@ async function getCNPJ() {
 
     // --> Pega os CNAEs no banco
     if(params.bot == 1){
-      ordemBusca = '&& id > 1 && id < 160'
+      ordemBusca = '&& id > 1 && id < 128'
     }
     if(params.bot == 2){
-      ordemBusca = '&& id > 161  && id < 320'
+      ordemBusca = '&& id > 129  && id < 256'
     }
     if(params.bot == 3){
-      ordemBusca = '&& id > 321  && id < 480'
+      ordemBusca = '&& id > 267  && id < 384'
     }
     if(params.bot == 4){
-      ordemBusca = '&& id > 481  && id <= 642'
+      ordemBusca = '&& id > 385  && id <= 512'
+    }
+    if(params.bot == 5){
+      ordemBusca = '&& id > 513  && id <= 642'
     }
 
     var cnaes = await sequelize.query("SELECT cnae FROM `cnaes` WHERE statusBot" + params.bot + "=0 "+ ordemBusca +" ORDER BY RAND()", {
