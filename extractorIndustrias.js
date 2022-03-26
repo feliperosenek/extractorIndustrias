@@ -11,6 +11,8 @@ const {
 const minimist = require('minimist');
 const params = minimist(process.argv.slice(2))
 
+console.log("XXXXX")
+
 const sequelize = new Sequelize('eduard72_'+ params.bd +'', 'eduard72_wp625', '37@S0DSm(p', {
   host: 'sh-pro20.hostgator.com.br',
   dialect: "mysql",
