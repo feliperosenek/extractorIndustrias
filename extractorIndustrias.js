@@ -98,7 +98,7 @@ async function validaGoogle() {
 
         // --> DEFINE A URL DE PESQUISA DE ACORDO COM O NOME DA EMPRESA
 
-      urlSearch = getIndustria[0].fantasia.replace(/\s/g, "+"); // pega o nome da empresa e formata os espaçoes com o caracteres + para ser usado na pesquisa do Google
+      urlSearch = getIndustria[0].nome.replace(/\s/g, "+"); // pega o nome da empresa e formata os espaçoes com o caracteres + para ser usado na pesquisa do Google
 
       page.goto("https://www.google.com.br/search?q=" + urlSearch) //faz a busca com a url formatada
       await delay(4000)
