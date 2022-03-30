@@ -75,14 +75,9 @@ async function getCNPJ() {
       console.log(" CNAE: " + cnaesSearch + "- total: "+ data.paginacao.total + "  |" + (i + 1) + "º de " + cnaes.length + " | Páginas: " + data.paginacao.paginas)
       console.log(" - - " + params.acao + " - - ");
 
-      var pageRound = 1
+      var pageRound = data.paginacao.paginas
 
-      // --> Filtros para quantidade de páginas do cnae
-      if (data.paginacao.paginas < 4) {
-        pageRound =  data.paginacao.paginas
-      }else{
-        pageRound = 4
-      }
+  
 
       for (var t = 0; t < pageRound; t++) {
         // --> Define uma página aleatória
