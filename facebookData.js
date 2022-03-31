@@ -41,7 +41,7 @@ async function facebookData() {
     let browser = await puppeteer.launch(options);
     let page = await browser.newPage();
 
-    var getFacebook = await sequelize.query("SELECT id, url FROM facebook WHERE atualizado=0", {
+    var getFacebook = await sequelize.query("SELECT id, url FROM facebook WHERE atualizado=0 ORDER BY rand()", {
       type: QueryTypes.SELECT
     })
 
