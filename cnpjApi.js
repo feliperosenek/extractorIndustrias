@@ -75,9 +75,9 @@ async function getCNPJ() {
       console.log(" CNAE: " + cnaesSearch + "- total: "+ data.paginacao.total + "  |" + (i + 1) + "º de " + cnaes.length + " | Páginas: " + data.paginacao.paginas)
       console.log(" - - " + params.acao + " - - ");
 
-      var pageRound = data.paginacao.paginas
+      var pageRound = params.paginas
 
-  
+
 
       for (var t = 0; t < pageRound; t++) {
         // --> Define uma página aleatória
