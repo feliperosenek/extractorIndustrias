@@ -37,11 +37,11 @@ async function facebookLink() {
       headless: false,
     };
 
-    var getFacebook = await sequelize.query("SELECT id, link FROM links WHERE atualizado=0", {
+    var getLinks = await sequelize.query("SELECT id, link FROM links WHERE atualizado=0", {
       type: QueryTypes.SELECT
     })
 
-    console.log(getFacebook.length + " Links");
+    console.log(getLinks.length + " Links");
 
     let browser = await puppeteer.launch(options);
     let page = await browser.newPage();
@@ -66,36 +66,24 @@ async function facebookLink() {
 
     await delay(10000)
 
-    for (var x = 0; x < getFacebook.length; x++) {
+    for (var x = 0; x < getLinks.length; x++) {
 
-      page.goto(getFacebook[x].link)
+      page.goto(getLinks[x].link)
 
       await delay(10000)
 
-      for (var i = 0; i < 250; i++) {
+      for (var i = 0; i < 1000; i++) {
         await page.evaluate(async () => {
           window.scrollBy(0, 600);
         });
-        await delay(500)
-        console.log(i + " de: " + 250);
+        data = await page.evaluate(() => document.querySelector('*').outerHTML);
+        dom = new JSDOM(data); // feito com javascript nativo DOM para facilitar a busca
+        endResults = dom.window.document.querySelector(".l9j0dhe7.du4w35lb.rq0escxv.j83agx80.cbu4d94t.pfnyh3mw.d2edcug0.pybr56ya");
+        console.log(i + " de: " + 1000);
+        if(endResults){
+          break
+        }
       }
-
-      for (var i = 0; i < 250; i++) {
-        await page.evaluate(async () => {
-          window.scrollBy(0, 600);
-        });
-        await delay(500)
-        console.log(i + " de: " + 250);
-      }
-
-      for (var i = 0; i < 250; i++) {
-        await page.evaluate(async () => {
-          window.scrollBy(0, 600);
-        });
-        await delay(500)
-        console.log(i + " de: " + 250);
-      }
-
 
       data = await page.evaluate(() => document.querySelector('*').outerHTML);
       dom = new JSDOM(data); // feito com javascript nativo DOM para facilitar a busca
@@ -109,7 +97,9 @@ async function facebookLink() {
         await sequelize.query("INSERT INTO facebook (url) VALUES ('" + urlFacebook[y].href + "')")
 
       }
-      await sequelize.query("UPDATE links SET atualizado=1 WHERE id="+getFacebook[x].id+"")
+      await sequelize.query("UPDATE links SET atualizado=1 WHERE id="+getLinks[x].id+"")
+      console.log("Aguardando 5 minutos para um novo Loop")
+      await delay(300000)
 
     }
 
