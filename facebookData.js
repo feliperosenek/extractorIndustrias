@@ -95,12 +95,6 @@ async function facebookData() {
     getFacebookWhatsapp=""
     getFacebookSite=""
   }
-
-
-
-
-
-
   } catch (error) {
     console.log(error);
     process.exit(1);
