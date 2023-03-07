@@ -1,7 +1,6 @@
 const consultarCNPJ = require('consultar-cnpj')
 const token = 'oNGyLzExsCUUh40O8azhX4aHn0iLL6xC6xjVNvgVV33w'
-const puppeteer = require('puppeteer');
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize")
 const {
   QueryTypes
 } = require('sequelize')
@@ -10,6 +9,7 @@ const {
   JSDOM
 } = jsdom;
 const minimist = require('minimist');
+const { addConsoleHandler } = require('selenium-webdriver/lib/logging');
 const params = minimist(process.argv.slice(2))
 
 const sequelize = new Sequelize("eduard72_" + params.bd + "", "eduard72_wp625", "37@S0DSm(p", {
@@ -117,7 +117,11 @@ async function getCNPJ() {
           telefone2 = industria.estabelecimento.telefone2;
           cnae = industria.estabelecimento.atividade_principal.id;
           cadastro = industria.estabelecimento.situacao_cadastral;
+          if(industria.porte){
           porte = industria.porte.descricao;
+          }else{
+          porte = ''
+          }
           produto_2 = industria.estabelecimento.atividade_principal.descricao;
           produto_3 = industria.estabelecimento.atividades_secundarias;
           tipo = industria.estabelecimento.tipo;
