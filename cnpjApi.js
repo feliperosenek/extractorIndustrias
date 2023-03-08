@@ -83,8 +83,9 @@ async function getCNPJ() {
 
       for (var t = 0; t < pageRound; t++) {
         // --> Define uma página aleatória
-        if(pageRound > 40){page = Math.floor(Math.random() * data.paginacao.paginas) + 1;}
-        else{pageRound = t+1}
+        if(pageRound > 40){
+          page = Math.floor(Math.random() * pageRound) + 1;
+        }else{pageRound = t+1}
         
         console.log("Página: " + page +"  | "+ (i + 1) + "º de " + cnaes.length);
 
