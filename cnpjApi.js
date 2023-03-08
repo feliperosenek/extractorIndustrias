@@ -77,6 +77,10 @@ async function getCNPJ() {
 
       var pageRound = params.paginas
 
+      if(data.paginacao.total < pageRound){
+        pageRound = data.paginacao.total
+      }
+
 
 
       for (var t = 0; t < pageRound; t++) {
