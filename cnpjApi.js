@@ -1,5 +1,5 @@
 const consultarCNPJ = require('consultar-cnpj')
-const token = 'oNGyLzExsCUUh40O8azhX4aHn0iLL6xC6xjVNvgVV33w'
+const token = 'y70p3Lp4SZpAccKaNmFINrBJUWWz5D396OhIsMCm4bMX'
 const Sequelize = require("sequelize")
 const {
   QueryTypes
