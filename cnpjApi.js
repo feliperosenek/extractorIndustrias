@@ -40,21 +40,67 @@ async function getCNPJ() {
   try {
 
     // --> Pega os CNAEs no banco
-    if(params.bot == 1){
-      ordemBusca = '&& id > 1 && id <= 593'
-    }
-   /* if(params.bot == 2){
-      ordemBusca = '&& id > 129  && id < 256'
-    }
-    if(params.bot == 3){
-      ordemBusca = '&& id > 267  && id < 384'
-    }
-    if(params.bot == 4){
-      ordemBusca = '&& id > 385  && id <= 512'
-    }
-    if(params.bot == 5){
-      ordemBusca = '&& id > 513  && id <= 642'
-    }*/
+   if (params.bot == 1) {
+    ordemBusca = '&& id > 1 && id <= 32';
+}
+if (params.bot == 2) {
+    ordemBusca = '&& id > 33 && id <= 64';
+}
+if (params.bot == 3) {
+    ordemBusca = '&& id > 65 && id <= 96';
+}
+if (params.bot == 4) {
+    ordemBusca = '&& id > 97 && id <= 128';
+}
+if (params.bot == 5) {
+    ordemBusca = '&& id > 129 && id <= 160';
+}
+if (params.bot == 6) {
+    ordemBusca = '&& id > 161 && id <= 192';
+}
+if (params.bot == 7) {
+    ordemBusca = '&& id > 193 && id <= 224';
+}
+if (params.bot == 8) {
+    ordemBusca = '&& id > 225 && id <= 256';
+}
+if (params.bot == 9) {
+    ordemBusca = '&& id > 257 && id <= 288';
+}
+if (params.bot == 10) {
+    ordemBusca = '&& id > 289 && id <= 320';
+}
+if (params.bot == 11) {
+    ordemBusca = '&& id > 321 && id <= 352';
+}
+if (params.bot == 12) {
+    ordemBusca = '&& id > 353 && id <= 384';
+}
+if (params.bot == 13) {
+    ordemBusca = '&& id > 385 && id <= 416';
+}
+if (params.bot == 14) {
+    ordemBusca = '&& id > 417 && id <= 448';
+}
+if (params.bot == 15) {
+    ordemBusca = '&& id > 449 && id <= 480';
+}
+if (params.bot == 16) {
+    ordemBusca = '&& id > 481 && id <= 512';
+}
+if (params.bot == 17) {
+    ordemBusca = '&& id > 513 && id <= 544';
+}
+if (params.bot == 18) {
+    ordemBusca = '&& id > 545 && id <= 576';
+}
+if (params.bot == 19) {
+    ordemBusca = '&& id > 577 && id <= 608';
+}
+if (params.bot == 20) {
+    ordemBusca = '&& id > 609 && id <= 642';
+}
+
 
     var cnaes = await sequelize.query("SELECT cnae FROM `cnaes` WHERE statusBot" + params.bot + "=0 "+ ordemBusca +" ORDER BY RAND()", {
       type: QueryTypes.SELECT
@@ -83,7 +129,7 @@ async function getCNPJ() {
 
       for (var t = 0; t < pageRound; t++) {
         // --> Define uma página aleatória
-        if(pageRound > 40){
+        if(pageRound > params.paginas){
           page = Math.floor(Math.random() * pageRound) + 1;
         }else{page = t+1}
         
